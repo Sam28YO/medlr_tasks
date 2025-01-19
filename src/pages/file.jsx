@@ -1,13 +1,19 @@
-import React from "react";
-import { atom, useRecoilState } from "recoil";
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { a, hydration } from "./atom";
 
-const a = atom({
-  key: "hello-",
-  default: "hello",
-});
 //console.log(a);
 const file = () => {
   const [alpha, setAlpha] = useRecoilState(a);
+  const [hydrated, setHydrated] = useRecoilState(hydration);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  if (!hydrated) {
+    return null;
+  }
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <button
