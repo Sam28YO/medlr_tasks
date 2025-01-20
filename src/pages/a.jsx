@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import axios from "axios";
 import { axiosUsers, axiosError } from "./atom";
+import React from "react";
 
 export default function AxiosPage() {
   const [users, setUsers] = useRecoilState(axiosUsers);

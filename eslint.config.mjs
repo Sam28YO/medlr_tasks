@@ -23,6 +23,8 @@ const eslintConfig = [
     },
     rules: {
       ...eslintPluginReact.configs.recommended.rules,
+      "react/react-in-jsx-scope": "error",
+      "react/prop-types": "error",
     },
     settings: {
       react: {
