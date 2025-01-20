@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Select from "react-select";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
-import { uuser, fformData, hydration1 } from "../atom";
+import { uuser, fformData, hydration1 } from "../../atom";
 import { FaUserAlt } from "react-icons/fa";
 import PropTypes from "prop-types";
 

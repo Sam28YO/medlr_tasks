@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
-import { uuser } from "../atom";
+import { uuser } from "../../atom";
 import { FaArrowLeft, FaUserAlt } from "react-icons/fa";
 import Link from "next/link";
 import PropTypes from "prop-types";

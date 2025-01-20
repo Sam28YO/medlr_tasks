@@ -1,3 +1,10 @@
+import React from "react";
+
+const table = () => {
+  return <div>table</div>;
+};
+
+export default table;
 // import { tableData } from "./atom";
 // import { useRecoilState } from "recoil";
 // import { useTable } from "@tanstack/react-table";
