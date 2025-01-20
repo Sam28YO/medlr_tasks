@@ -10,7 +10,7 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals"),
+  ...compat.extends("next/core-web-vitals"), // Ensure this is properly extended
   "plugin:react/recommended", // Optional: Add React recommended rules
 ];
 
