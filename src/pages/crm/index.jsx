@@ -301,6 +301,6 @@ export async function getServerSideProps() {
   };
 }
 
-UserDetail.propTypes = {
+Home.propTypes = {
   usersData: PropTypes.array.isRequired,
 };

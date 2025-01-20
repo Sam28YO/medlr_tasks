@@ -53,6 +53,6 @@ export async function getStaticProps() {
   };
 }
 
-UserDetail.propTypes = {
+FetchPage.propTypes = {
   usersData: PropTypes.array.isRequired,
 };

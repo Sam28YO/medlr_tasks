@@ -53,6 +53,6 @@ export async function getServerSideProps() {
   };
 }
 
-UserDetail.propTypes = {
+FetchPage.propTypes = {
   usersData: PropTypes.array.isRequired,
 };

@@ -37,6 +37,6 @@ export default function FetchPage({ usersData }) {
   );
 }
 
-UserDetail.propTypes = {
+FetchPage.propTypes = {
   usersData: PropTypes.array.isRequired,
 };
