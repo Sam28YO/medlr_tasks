@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import { uuser } from "../atom";
 import { FaArrowLeft, FaUserAlt } from "react-icons/fa";
 import Link from "next/link";
+import PropTypes from "prop-types";
 
 export default function UserDetail({ usersData }) {
   const router = useRouter();
@@ -50,3 +51,7 @@ export async function getServerSideProps() {
     },
   };
 }
+
+UserDetail.propTypes = {
+  usersData: PropTypes.array.isRequired,
+};
