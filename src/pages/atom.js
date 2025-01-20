@@ -43,7 +43,33 @@ export const hydration = atom({
   default: false,
 });
 
+export const hydration1 = atom({
+  key: "hydration---",
+  default: false,
+});
+
 const tableData = atom({
   key: "tableData",
   default: [],
+});
+
+export const selecteduser = atom({
+  key: "selectedUser",
+  default: null,
+});
+
+export const uuser = atom({
+  key: "uuser",
+  default: [],
+  effects: [localStorageEffect("uuser")],
+});
+
+export const searchState = atom({
+  key: "searchState",
+  default: "",
+});
+
+export const fformData = atom({
+  key: "formData",
+  default: { name: "", email: "", phone: "", address: {}, company: {} },
 });
