@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { fetchUsers } from "./atom";
+import PropTypes from "prop-types";
 
 export default function FetchPage({ usersData }) {
   const [users, setUsers] = useRecoilState(fetchUsers);
@@ -51,3 +52,7 @@ export async function getStaticProps() {
     },
   };
 }
+
+UserDetail.propTypes = {
+  usersData: PropTypes.array.isRequired,
+};

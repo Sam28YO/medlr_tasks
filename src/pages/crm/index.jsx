@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRecoilState } from "recoil";
 import { uuser, fformData, hydration1 } from "../atom";
 import { FaUserAlt } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 export default function Home({ usersData }) {
   const [users, setUsers] = useRecoilState(uuser);
@@ -299,3 +300,7 @@ export async function getServerSideProps() {
     },
   };
 }
+
+UserDetail.propTypes = {
+  usersData: PropTypes.array.isRequired,
+};
