@@ -24,15 +24,15 @@ export default function UserDetail({ usersData }) {
         </Link>
         <div className="p-6 border rounded shadow-md bg-white">
           <h2 className="text-2xl font-bold flex items-center gap-2 text-blue-600">
-            <FaUserAlt /> {user.name}
+            <FaUserAlt /> {user?.name}
           </h2>
-          <p className="text-lg mt-2 text-black">Email: {user.email}</p>
-          <p className="text-lg text-black">Phone: {user.phone}</p>
-          <p className="text-lg text-black">Website: {user.website}</p>
+          <p className="text-lg mt-2 text-black">Email: {user?.email}</p>
+          <p className="text-lg text-black">Phone: {user?.phone}</p>
+          <p className="text-lg text-black">Website: {user?.website}</p>
           <p className="text-lg text-black">
-            Address: {user.address.street}, {user.address.city}
+            Address: {user.address.street}, {user?.address.city}
           </p>
-          <p className="text-lg text-black">Company: {user.company.name}</p>
+          <p className="text-lg text-black">Company: {user?.company.name}</p>
         </div>
       </div>
     </div>

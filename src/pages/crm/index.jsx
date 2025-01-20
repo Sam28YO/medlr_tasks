@@ -55,6 +55,28 @@ export default function Home({ usersData }) {
     if (name) {
       const updatedUsers = users.filter((user) => user.name !== name);
       setUsers(updatedUsers);
+      setFormData((prev) => ({ ...prev, name: "" }));
+    }
+  };
+
+  const handleEditUser = (name) => {
+    if (name) {
+      const existingUser = users.find((user) => user.name === name);
+
+      if (existingUser) {
+        setFormData(existingUser);
+      } else {
+        alert("No user found with this name");
+      }
+    }
+  };
+
+  const handleSaveUser = (updatedUser) => {
+    if (updatedUser.name && updatedUser.email && updatedUser.phone) {
+      const updatedUsers = users.map((user) =>
+        user.id === updatedUser.id ? updatedUser : user
+      );
+      setUsers(updatedUsers);
       setFormData({});
     }
   };
@@ -94,111 +116,113 @@ export default function Home({ usersData }) {
           <input
             type="text"
             placeholder="Name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="mb-2 p-2 w-full border rounded"
+            value={formData.name || ""}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, name: e.target.value }))
+            }
+            className="mb-2 p-2 w-full border rounded text-black"
           />
           <input
             type="email"
             placeholder="Email"
-            value={formData.email}
+            value={formData.email || ""}
             onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
+              setFormData((prev) => ({ ...prev, email: e.target.value }))
             }
-            className="mb-2 p-2 w-full border rounded"
+            className="mb-2 p-2 w-full border rounded text-black"
           />
           <input
             type="text"
             placeholder="Phone"
-            value={formData.phone}
+            value={formData.phone || ""}
             onChange={(e) =>
-              setFormData({ ...formData, phone: e.target.value })
+              setFormData((prev) => ({ ...prev, phone: e.target.value }))
             }
-            className="mb-2 p-2 w-full border rounded"
+            className="mb-2 p-2 w-full border rounded text-black"
           />
           <input
             type="text"
             placeholder="Street"
             value={formData.address?.street || ""}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                address: { ...formData.address, street: e.target.value },
-              })
+              setFormData((prev) => ({
+                ...prev,
+                address: { ...prev.address, street: e.target.value },
+              }))
             }
-            className="mb-2 p-2 w-full border rounded"
+            className="mb-2 p-2 w-full border rounded text-black"
           />
           <input
             type="text"
             placeholder="Suite"
             value={formData.address?.suite || ""}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                address: { ...formData.address, suite: e.target.value },
-              })
+              setFormData((prev) => ({
+                ...prev,
+                address: { ...prev.address, suite: e.target.value },
+              }))
             }
-            className="mb-2 p-2 w-full border rounded"
+            className="mb-2 p-2 w-full border rounded text-black"
           />
           <input
             type="text"
             placeholder="City"
             value={formData.address?.city || ""}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                address: { ...formData.address, city: e.target.value },
-              })
+              setFormData((prev) => ({
+                ...prev,
+                address: { ...prev.address, city: e.target.value },
+              }))
             }
-            className="mb-2 p-2 w-full border rounded"
+            className="mb-2 p-2 w-full border rounded text-black"
           />
           <input
             type="text"
             placeholder="Zipcode"
             value={formData.address?.zipcode || ""}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                address: { ...formData.address, zipcode: e.target.value },
-              })
+              setFormData((prev) => ({
+                ...prev,
+                address: { ...prev.address, zipcode: e.target.value },
+              }))
             }
-            className="mb-2 p-2 w-full border rounded"
+            className="mb-2 p-2 w-full border rounded text-black"
           />
           <input
             type="text"
             placeholder="Company Name"
             value={formData.company?.name || ""}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                company: { ...formData.company, name: e.target.value },
-              })
+              setFormData((prev) => ({
+                ...prev,
+                company: { ...prev.company, name: e.target.value },
+              }))
             }
-            className="mb-2 p-2 w-full border rounded"
+            className="mb-2 p-2 w-full border rounded text-black"
           />
           <input
             type="text"
             placeholder="Company CatchPhrase"
             value={formData.company?.catchPhrase || ""}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                company: { ...formData.company, catchPhrase: e.target.value },
-              })
+              setFormData((prev) => ({
+                ...prev,
+                company: { ...prev.company, catchPhrase: e.target.value },
+              }))
             }
-            className="mb-2 p-2 w-full border rounded"
+            className="mb-2 p-2 w-full border rounded text-black"
           />
           <input
             type="text"
             placeholder="Company BS"
             value={formData.company?.bs || ""}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                company: { ...formData.company, bs: e.target.value },
-              })
+              setFormData((prev) => ({
+                ...prev,
+                company: { ...prev.company, bs: e.target.value },
+              }))
             }
-            className="mb-2 p-2 w-full border rounded"
+            className="mb-2 p-2 w-full border rounded text-black"
           />
           <button
             onClick={() => handleAddUser(formData)}
@@ -206,19 +230,37 @@ export default function Home({ usersData }) {
           >
             Add User
           </button>
+          <button
+            onClick={() => handleSaveUser(formData)}
+            className="bg-green-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-700 w-full mt-2"
+          >
+            Save User
+          </button>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold text-center text-black mb-4">
+            Edit User
+          </h2>
+          <input
+            type="text"
+            placeholder="Enter user name to edit"
+            value={formData.name || ""}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="mb-2 p-2 w-full border rounded"
+          />
+          <button
+            onClick={() => handleEditUser(formData.name)}
+            className="bg-yellow-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-yellow-700 w-full mt-2"
+          >
+            Edit User
+          </button>
         </div>
 
         <div>
           <h2 className="text-xl font-semibold text-center text-black mb-4">
             Remove User
           </h2>
-          <input
-            type="text"
-            placeholder="Enter user name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="mb-2 p-2 w-full border rounded"
-          />
           <button
             onClick={() => handleRemoveUser(formData.name)}
             className="bg-red-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-red-700 w-full"
