@@ -1,6 +1,7 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
+import eslintPluginReact from "eslint-plugin-react";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -10,8 +11,25 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals"), // Ensure this is properly extended
-  "plugin:react/recommended", // Optional: Add React recommended rules
+  {
+    // Enable all rules from next/core-web-vitals
+    ...compat.extends("next/core-web-vitals")[0],
+  },
+  {
+    // Enable React recommended rules
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+    plugins: {
+      react: eslintPluginReact,
+    },
+    rules: {
+      ...eslintPluginReact.configs.recommended.rules,
+    },
+    settings: {
+      react: {
+        version: "detect", // Automatically detect React version
+      },
+    },
+  },
 ];
 
 export default eslintConfig;
